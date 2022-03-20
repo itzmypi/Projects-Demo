@@ -1,0 +1,1 @@
+This is the code for a C# application made using Windows Forms. It uses a local SQL database and Windows' speech recognition API to detect and execute voice commands from the user. It also contains an editor screen in Window.cs for modifying the contents of the local database.
