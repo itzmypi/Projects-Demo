@@ -1,0 +1,1 @@
+This is by far my largest project. It uses React Native to create a cross-platform mobile app. The app is a companion app for the video game "Destiny 2" which uses the game's web API to allow users to perform in-game functions. More information about the app can be found at https://sites.google.com/view/destinypowerup/.
