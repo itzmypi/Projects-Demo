@@ -1,0 +1,1 @@
+This program demonstrates the use of a website with a Python backend and an HTML and JavaScript frontend. It uses flask for Python to manage HTTP requests and pyodbc to manage a local MsSQL database. On the website, you can cast a vote for your chosen election candidate, edit the vote, view it, and delete it.
