@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<style>
+    .everything{
+        margin:10px
+    }
+</style>
+<div>
+
+
+    <input type="text" id="FirstNameBox" value="First Name" class="everything"><input type="text" id="LastNameBox" value="Last Name" class="everything"><input type="text" id="VoteBox" value="Your Vote" class="everything">
+    <button type="button" id="SubmitButton">Submit</button><input type="text" id="SubmitResult" class="everything" readonly><br/>
+
+
+
+    <input type="text" id="FirstNameEdit" value="First Name" class="everything"><input type="text" id="LastNameEdit" value="Last Name" class="everything"><input type="text" id="EditVoteBox" value="Your New Vote" class="everything">
+    <button type="button" id="EditButton">Edit</button><input type="text" id="EditResult" class="everything" readonly><br/>
+
+
+
+    <input type="text" id="FirstNameView" value="First Name" class="everything"><input type="text" id="LastNameView" value="Last Name" class="everything">
+    <button type="button" id="ViewButton">View</button><input type="text" id="ViewResult" class="everything" readonly><br/>
+
+
+
+    <input type="text" id="FirstNameDelete" value="First Name" class="everything"><input type="text" id="LastNameDelete" value="Last Name" class="everything"><input type="text" id="DeleteVoteBox" value="Your Vote" class="everything">
+    <button type="button" id="DeleteButton">Delete</button><input type="text" id="DeleteResult" class="everything" readonly><br/>
+
+
+
+</div>
+
+<script>
+    $("#SubmitButton").click(function () {
+        var fName = $("#FirstNameBox").val();
+        var lName = $("#LastNameBox").val();
+        var vote = $("#VoteBox").val();
+        $.ajax({
+            type: "POST",
+            url: "/",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: JSON.stringify({"first":fName,"last":lName,"vote":vote}),
+            success: function (data) {
+                $("#SubmitResult").val(data.message);
+            },
+            error: function (data) {
+                $("#SubmitResult").val(data.message);
+            }
+        });
+    });
+    $("#EditButton").click(function () {
+        var fName = $("#FirstNameEdit").val();
+        var lName = $("#LastNameEdit").val();
+        var vote = $("#EditVoteBox").val();
+        $.ajax({
+            type: "PUT",
+            url: "/",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: JSON.stringify({"first":fName,"last":lName,"vote":vote}),
+            success: function (data) {
+                $("#EditResult").val(data.message);
+            },
+            error: function (data) {
+                $("#EditResult").val(data.message);
+            }
+        });
+    });
+    $("#ViewButton").click(function () {
+        var fName = $("#FirstNameView").val();
+        var lName = $("#LastNameView").val();
+        $.ajax({
+            type: "VIEW",
+            url: "/",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: JSON.stringify({"first":fName,"last":lName}),
+            success: function (data) {
+                $("#ViewResult").val(data.vote);
+            },
+            error: function (data) {
+                $("#ViewResult").val(data.vote);
+            }
+        });
+    });
+    $("#DeleteButton").click(function () {
+        var fName = $("#FirstNameDelete").val();
+        var lName = $("#LastNameDelete").val();
+        var vote = $("#DeleteVoteBox").val();
+        $.ajax({
+            type: "DELETE",
+            url: "/",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: JSON.stringify({"first":fName,"last":lName,"vote":vote}),
+            success: function (data) {
+                $("#DeleteResult").val(data.message);
+            },
+            error: function (data) {
+                $("#DeleteResult").val(data.message);
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
